@@ -15,7 +15,7 @@
       <form class="flex-form-container">
         <input v-model="email" type="text" placeholder="Email" name="email" required>
         <input v-model="password" type="password" placeholder="Password" name="password" required>
-        <button v-on:click="login(email,password)" type="submit">Login</button>
+        <button @click.prevent="login(email,password)" type="submit">Login</button>
       </form>
 
       <div class="flex-form-register">
@@ -41,24 +41,51 @@ export default {
 
   data() {
     return {
-      email: '',
-      password: ''
+      email: 'test@test.com',
+      password: '12345678'
     }
   },
-
   methods: {
     login(email, password) {
-      alert(email + ' ' + password);
+      console.log(email);
+      console.log(password);
+      const data = {
+        email: email,
+        password: password
+      };
+
       fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      }).then(response => response.json()).then(data => alert(data.data));
+        body: JSON.stringify(data)
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch(err => console.error(err))
+      /*const data = {
+        email: "test@test.com",
+        password: "12345678",
+      };
+      let token = "";
+      fetch("http://puigmal.salle.url.edu/api/v2/users/login ", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.accessToken);
+            token = data.accessToken;
+            alert(token);
+          });*/
+
+
     }
   }
 
