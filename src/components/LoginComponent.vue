@@ -15,7 +15,7 @@
       <form class="flex-form-container">
         <input v-model="email" type="text" placeholder="Email" name="email" required>
         <input v-model="password" type="password" placeholder="Password" name="password" required>
-        <button @click.prevent="login(email,password)" type="submit">Login</button>
+        <button v-on:click.prevent="login(email,password)" type="submit">Login</button>
       </form>
 
       <div class="flex-form-register">
