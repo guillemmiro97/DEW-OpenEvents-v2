@@ -41,29 +41,32 @@ export default {
 
   methods: {
     register(name,last_name,email,password,confirm_paswd,image) {
-      const data = {
-        name: name,
-        last_name: last_name,
-        email: email,
-        password: password,
-        image: image
+
+      if (password === confirm_paswd) {
+        const data = {
+          name: name,
+          last_name: last_name,
+          email: email,
+          password: password,
+          image: image
+        }
+
+        fetch('http://puigmal.salle.url.edu/api/v2/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then((data) => {
+              console.log(data);
+            })
+            .catch(err => console.error(err))
+      } else {
+        alert("Passwords do not match");
       }
-
-      fetch('http://puigmal.salle.url.edu/api/v2/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-          .then(res => res.json())
-          .then((data) => {
-            console.log(data);
-          })
-          .catch(err => console.error(err))
-
     }
-
   }
 }
 
