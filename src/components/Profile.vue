@@ -3,6 +3,7 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
+    <!---Menu de usuario-->
     <div class="dropdown">
       <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
       <div class="dropdown-content">
@@ -13,12 +14,29 @@
       </div>
     </div>
   </header>
+  <!--Contenido de la pagina-->
   <main>
-    <div class="flex-container-boxes">
-      <a href="friend_zone/list_friends.html">Friend zone</a>
-      <a v-on:click="showToken()">Events</a>
-    </div>
+    <!---Una sola section con el contenido de usuario-->
+    <section>
+      <h1>Profile</h1>
+      <div class="flex-container">
+        <div class="flex-item">
+          <img class="event-location-image" src="../assets/profile_picture.webp" alt="Profile picture">
+        </div>
+        <div class="flex-item">
+          <h2>Name</h2>
+          <h2>Last Name</h2>
+          <h2>Date of birth</h2>
+          <h2>email@gmail.com</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+        </div>
+      </div>
+    </section>
   </main>
+  <!--Footer de la pagina-->
   <footer>
     <div class="flex-container-icons">
       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
@@ -30,19 +48,7 @@
 
 <script>
 export default {
-  name: "MainComponent"
-  ,
-  data() {
-    return {
-      message: "Hello Vue!"
-    }
-  },
-  methods: {
-    showToken() {
-      alert(this.token)
-    }
-  }
-
+  name: "ProfileComponent"
 }
 </script>
 
@@ -69,7 +75,6 @@ export default {
   text-decoration: none;
   color: black;
 }
-
 .dropdown{
   background-color: whitesmoke;
   border-radius: 50%;
@@ -110,50 +115,120 @@ body {
   background-color: #EFEFEF;
 }
 
+.flex-container-update{
+  font-family: Calibri, serif;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+}
+
+.flex-form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+form {
+  border: 3px solid black;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 200px 12px 40px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: lightgray;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 8%;
+}
+
 button:hover {
   opacity: 0.8;
 }
 
-.flex-container-boxes{
+
+
+table {
+  font-family: Calibri, serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+main{
+  transition: 0.5s;
+  font-family: Calibri, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main h1{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+main h2{
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  font-family: Calibri, serif, sans-serif;
+}
+
+main img {
+  width: 40%;
+  height: 40%;
+}
+
+
+.flex-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  margin-top: 10%;
-  height: 30vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
-@media screen and (max-width: 600px) {
-  .flex-container-boxes{
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10%;
-    gap: 10px
-  }
+.flex-item:nth-child(1) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
 }
 
-.flex-container-boxes a{
-  border: groove #f2e6d9;
-  border-radius: 10px;
-  font-style: italic;
-  padding: 2em;
-  text-decoration: none;
-  font-family: "Calibri", serif;
-  font-size: xx-large;
-  background: #f9f2ec;
-  color:black;
+.flex-item:nth-child(2) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  width: 50%;
 }
 
-.flex-container-boxes a:hover{
-  opacity: 0.5;
-}
-
-footer{
+footer {
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
   width: 100%;
 }
+
 
 .fa {
   padding: 10px;
