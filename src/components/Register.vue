@@ -42,7 +42,7 @@ export default {
   methods: {
     register(name,last_name,email,password,confirm_paswd,image) {
 
-      if (password === confirm_paswd) {
+      if (password === confirm_paswd && password.length > 8) {
         const data = {
           name: name,
           last_name: last_name,
@@ -61,10 +61,16 @@ export default {
             .then(res => res.json())
             .then((data) => {
               console.log(data);
+              alert("User "+name+" created");
+              this.$router.push('/');
             })
             .catch(err => console.error(err))
       } else {
-        alert("Passwords do not match");
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters");
+        } else {
+          alert("Passwords do not match");
+        }
       }
     }
   }
