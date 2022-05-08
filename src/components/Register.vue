@@ -3,14 +3,13 @@
     <h1 id="title-register">OpenEvents</h1>
     <form class="flex-form-container">
 
-      <input type="text" placeholder="Name" name="name" required>
-      <input type="text" placeholder="Last Name" name="lastname" required>
-      <input type="text" placeholder="Date of birth" name="date" required>
-      <input type="text" placeholder="Email" name="email" required>
-      <input type="password" placeholder="Password" name="password" required>
-      <input type="password" placeholder="Confirm Password" name="confirmpassword" required>
-      <input type="text" placeholder="Add profile picture" name="profilepic" required>
-      <button type="submit">Submit</button>
+      <input v-model="name" type="text" placeholder="Name" name="name" required>
+      <input v-model="last_name" type="text" placeholder="Last Name" name="lastname" required>
+      <input v-model="email" type="text" placeholder="Email" name="email" required>
+      <input v-model="password" type="password" placeholder="Password" name="password" required>
+      <input v-model="confirm_paswd" type="password" placeholder="Confirm Password" name="confirmpassword" required>
+      <input v-model="image" type="text" placeholder="Add profile picture" name="profilepic" required>
+      <button v-on:click.prevent="register(name,last_name,email,password,confirm_paswd,image)" type="submit">Submit</button>
     </form>
 
   </main>
@@ -26,7 +25,50 @@
 <script>
 export default {
   name: "RegisterComponent",
+
+
+  data() {
+    return {
+      name: "test2",
+      last_name: "test2",
+      email: "test2@test2.com",
+      password: "12345678",
+      confirm_paswd: "12345678",
+      image: "https://i.imgur.com/ghy8Xx1.png"
+    }
+
+  },
+
+  methods: {
+    register(name,last_name,email,password,confirm_paswd,image) {
+      const data = {
+        name: name,
+        last_name: last_name,
+        email: email,
+        password: password,
+        image: image
+      }
+
+      fetch('http://puigmal.salle.url.edu/api/v2/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch(err => console.error(err))
+
+    }
+
+  }
 }
+
+
+
 </script>
 
 <style scoped>
@@ -128,11 +170,11 @@ button:hover {
 }
 
 .flex-items h1 {
-  font-size:5.5em;
+  font-size: 5.5em;
 }
 
-#title-register{
-  font-size:5.5em;
+#title-register {
+  font-size: 5.5em;
   text-align: center;
 }
 
@@ -141,7 +183,10 @@ a {
   font-family: Verdana, serif;
 }
 
-a:visited { text-decoration: none; color:navy;}
+a:visited {
+  text-decoration: none;
+  color: navy;
+}
 
 .flex-container-icons {
   display: flex;
@@ -154,7 +199,7 @@ a:visited { text-decoration: none; color:navy;}
   margin-right: 5%;
 }
 
-footer{
+footer {
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
