@@ -4,6 +4,8 @@ import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Main from "@/components/Main";
 import Profile from "@/components/Profile";
+import Stats from "@/components/Stats";
+import AccountConfig from "@/components/AccountConfig";
 
 const routes = [
   {
@@ -25,6 +27,16 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/stats',
+    name: 'stats',
+    component: Stats
+  },
+  {
+    path: '/accountConfig',
+    name: 'accountConfig',
+    component: AccountConfig
   }
 ]
 

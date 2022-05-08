@@ -3,40 +3,42 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
-    <!---Menu de usuario-->
     <div class="dropdown">
       <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
-        <a href="account_config.html">Account configuration</a>
+        <router-link to="/accountConfig">Account configuration</router-link>
         <a href="#">Logout</a>
       </div>
     </div>
   </header>
-  <!--Contenido de la pagina-->
-  <main>
-    <!---Una sola section con el contenido de usuario-->
-    <section>
-      <h1>Profile</h1>
-      <div class="flex-container">
-        <div class="flex-item">
-          <img class="event-location-image" src="../assets/profile_picture.webp" alt="Profile picture">
-        </div>
-        <div class="flex-item">
-          <h2>Name</h2>
-          <h2>Last Name</h2>
-          <h2>Date of birth</h2>
-          <h2>email@gmail.com</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-        </div>
-      </div>
-    </section>
+
+
+  <h2 class="flex-container-update">Account Stats</h2>
+
+
+  <main class="flex-form-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Average punctuation</th>
+        <th>Number of comments</th>
+        <th>% of users with less comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>100 points</td>
+        <td>54863</td>
+        <td>85%</td>
+      </tr>
+      </tbody>
+
+    </table>
   </main>
-  <!--Footer de la pagina-->
+
+
   <footer>
     <div class="flex-container-icons">
       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
@@ -48,7 +50,7 @@
 
 <script>
 export default {
-  name: "ProfileComponent"
+  name: "StatsComponent"
 }
 </script>
 
@@ -173,31 +175,6 @@ td, th {
   padding: 8px;
 }
 
-main{
-  transition: 0.5s;
-  font-family: Calibri, serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-main h1{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-
-main h2{
-  display: flex;
-  justify-content: left;
-  flex-direction: row;
-  font-family: Calibri, serif, sans-serif;
-}
-
-main img {
-  width: 40%;
-  height: 40%;
-}
 
 
 .flex-container {

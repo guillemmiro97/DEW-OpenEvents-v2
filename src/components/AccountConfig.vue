@@ -3,40 +3,36 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
-    <!---Menu de usuario-->
     <div class="dropdown">
       <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
-        <a href="account_config.html">Account configuration</a>
+        <router-link to="/accountConfig">Account configuration</router-link>
         <a href="#">Logout</a>
       </div>
     </div>
   </header>
-  <!--Contenido de la pagina-->
+
   <main>
-    <!---Una sola section con el contenido de usuario-->
-    <section>
-      <h1>Profile</h1>
-      <div class="flex-container">
-        <div class="flex-item">
-          <img class="event-location-image" src="../assets/profile_picture.webp" alt="Profile picture">
-        </div>
-        <div class="flex-item">
-          <h2>Name</h2>
-          <h2>Last Name</h2>
-          <h2>Date of birth</h2>
-          <h2>email@gmail.com</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-        </div>
-      </div>
-    </section>
+    <h2 class="flex-container-update">Update Profile</h2>
+
+    <form class="flex-form-container">
+      <input type="text" placeholder="Name" name="name" required>
+      <input type="text" placeholder="Last Name" name="lastname" required>
+      <input type="text" placeholder="Date of birth" name="date" required>
+      <input type="text" placeholder="Email" name="email" required>
+    </form>
+
+    <h2 class="flex-container-update">Change password</h2>
+
+    <form class="flex-form-container">
+      <input type="password" placeholder="Password" name="password" required>
+      <input type="password" placeholder="Confirm Password" name="confirmpassword" required>
+      <button type="submit">Submit</button>
+    </form>
   </main>
-  <!--Footer de la pagina-->
+
   <footer>
     <div class="flex-container-icons">
       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
@@ -48,7 +44,7 @@
 
 <script>
 export default {
-  name: "ProfileComponent"
+  name: "AccountConfigComponent"
 }
 </script>
 
@@ -75,6 +71,7 @@ export default {
   text-decoration: none;
   color: black;
 }
+
 .dropdown{
   background-color: whitesmoke;
   border-radius: 50%;
@@ -117,7 +114,7 @@ body {
 
 .flex-container-update{
   font-family: Calibri, serif;
-  font-size: x-large;
+  font-size: xx-large;
   display: flex;
   justify-content: center;
 }
@@ -131,12 +128,8 @@ body {
   align-content: stretch;
 }
 
-form {
-  border: 3px solid black;
-}
-
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 25%;
   padding: 12px 200px 12px 40px;
   margin: 8px 0;
   display: inline-block;
@@ -159,76 +152,12 @@ button:hover {
   opacity: 0.8;
 }
 
-
-
-table {
-  font-family: Calibri, serif;
-  border-collapse: collapse;
-  width: 80%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-
-main{
-  transition: 0.5s;
-  font-family: Calibri, serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-main h1{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-
-main h2{
-  display: flex;
-  justify-content: left;
-  flex-direction: row;
-  font-family: Calibri, serif, sans-serif;
-}
-
-main img {
-  width: 40%;
-  height: 40%;
-}
-
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
-
-.flex-item:nth-child(1) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-}
-
-.flex-item:nth-child(2) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-  width: 50%;
-}
-
 footer {
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
   width: 100%;
 }
-
 
 .fa {
   padding: 10px;

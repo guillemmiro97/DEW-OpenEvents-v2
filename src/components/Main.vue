@@ -7,7 +7,7 @@
       <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
-        <a href="account_stats.html">Account stats</a>
+        <router-link to="/stats">Account stats</router-link>
         <a href="account_config.html">Account configuration</a>
         <a href="#">Logout</a>
       </div>
