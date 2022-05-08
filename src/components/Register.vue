@@ -1,28 +1,17 @@
 <template>
   <main>
-    <section>
-      <div class="flex-container">
-        <div class="flex-items">
-          <img class="party-photo" alt="Profile picture" src="../assets/party_image.jpeg">
-        </div>
-        <div class="flex-items">
-          <h1>OpenEvents</h1>
-        </div>
-      </div>
-    </section>
-    <section>
+    <h1 id="title-register">OpenEvents</h1>
+    <form class="flex-form-container">
 
-      <form class="flex-form-container">
-        <input v-model="email" type="text" placeholder="Email" name="email" required>
-        <input v-model="password" type="password" placeholder="Password" name="password" required>
-        <button v-on:click.prevent="login(email,password)" type="submit">Login</button>
-      </form>
-
-      <div class="flex-form-register">
-        <div class="flex-items-register"><a>Not registered?</a></div>
-        <div class="flex-items-register"><a href="">Register</a></div>
-      </div>
-    </section>
+      <input type="text" placeholder="Name" name="name" required>
+      <input type="text" placeholder="Last Name" name="lastname" required>
+      <input type="text" placeholder="Date of birth" name="date" required>
+      <input type="text" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <input type="password" placeholder="Confirm Password" name="confirmpassword" required>
+      <input type="text" placeholder="Add profile picture" name="profilepic" required>
+      <button type="submit">Submit</button>
+    </form>
 
   </main>
   <footer>
@@ -32,68 +21,15 @@
       <div><a href="#" class="fa fa-google" style="color: white"></a></div>
     </div>
   </footer>
-
 </template>
 
 <script>
 export default {
-  name: "LoginComponent",
-
-  data() {
-    return {
-      email: 'test@test.com',
-      password: '12345678'
-    }
-  },
-  methods: {
-    login(email, password) {
-      console.log(email);
-      console.log(password);
-      const data = {
-        email: email,
-        password: password
-      };
-
-      fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-          .then(res => res.json())
-          .then((data) => {
-            console.log(data);
-          })
-          .catch(err => console.error(err))
-      /*const data = {
-        email: "test@test.com",
-        password: "12345678",
-      };
-      let token = "";
-      fetch("http://puigmal.salle.url.edu/api/v2/users/login ", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data.accessToken);
-            token = data.accessToken;
-            alert(token);
-          });*/
-
-
-    }
-  }
-
+  name: "RegisterComponent",
 }
 </script>
 
 <style scoped>
-
 body {
   background-color: #EFEFEF;
 }
@@ -192,11 +128,11 @@ button:hover {
 }
 
 .flex-items h1 {
-  font-size: 5.5em;
+  font-size:5.5em;
 }
 
-#title-register {
-  font-size: 5.5em;
+#title-register{
+  font-size:5.5em;
   text-align: center;
 }
 
@@ -205,10 +141,7 @@ a {
   font-family: Verdana, serif;
 }
 
-a:visited {
-  text-decoration: none;
-  color: navy;
-}
+a:visited { text-decoration: none; color:navy;}
 
 .flex-container-icons {
   display: flex;
@@ -221,7 +154,7 @@ a:visited {
   margin-right: 5%;
 }
 
-footer {
+footer{
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
@@ -258,5 +191,4 @@ footer {
   margin-top: 5%;
   margin-right: 2%;
 }
-
 </style>

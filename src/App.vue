@@ -6,12 +6,14 @@
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue';
-import LoginComponent from './components/LoginComponent.vue';
+import LoginComponent from './components/Login.vue';
+import RegisterComponent from "@/components/Register";
 
 export default {
   name: 'App',
   components: {
     LoginComponent,
+    RegisterComponent,
   }
 }
 </script>
