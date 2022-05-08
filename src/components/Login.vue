@@ -20,7 +20,7 @@
 
       <div class="flex-form-register">
         <div class="flex-items-register"><a>Not registered?</a></div>
-        <div class="flex-items-register"><a v-on:click.prevent="goToRegister">Register</a></div>
+        <div class="flex-items-register"><router-link to="/register">Register</router-link></div>
       </div>
     </section>
 
@@ -34,7 +34,6 @@
   </footer>
 
 </template>
-
 <script>
 
 export default {
@@ -67,10 +66,6 @@ export default {
             console.log(data);
           })
           .catch(err => console.error(err))
-    },
-
-    goToRegister() {
-      this.$router.push('/register');
     }
   }
 
