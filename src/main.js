@@ -1,6 +1,11 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+app.config.globalProperties.token = "0000lhjlj00000"
+
+
+app.use(router).mount('#app')
+

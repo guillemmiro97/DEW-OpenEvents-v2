@@ -64,6 +64,11 @@ export default {
           .then(res => res.json())
           .then((data) => {
             console.log(data);
+
+            this.token = data.accessToken;
+            alert(this.token)
+
+            this.$router.push('/main');
           })
           .catch(err => console.error(err))
     }
