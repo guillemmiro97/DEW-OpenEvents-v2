@@ -1,11 +1,14 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
+import Vue3Storage, {StorageType} from "vue3-storage";
+
 
 const app = createApp(App)
 
-app.config.globalProperties.token = "0000lhjlj00000"
+app.use(router)
 
+app.use(Vue3Storage,{ namespace: "pro_", storage: StorageType.Local })
 
-app.use(router).mount('#app')
+app.mount('#app')
 

@@ -29,9 +29,12 @@
 </template>
 
 <script>
+
 export default {
   name: "MainComponent"
   ,
+
+
   data() {
     return {
       message: "Hello Vue!"
@@ -39,7 +42,8 @@ export default {
   },
   methods: {
     showToken() {
-      alert(this.token)
+      let token = this.$storage.getStorageSync('token')
+      alert(token)
     }
   }
 

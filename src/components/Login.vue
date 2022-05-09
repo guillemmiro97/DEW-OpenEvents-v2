@@ -35,18 +35,24 @@
 
 </template>
 <script>
-
 export default {
   name: "LoginComponent",
+
 
   data() {
     return {
       email: 'test@test.com',
-      password: '12345678'
+      password: '12345678',
+    }
+  },
+  created() {
+    if(this.$storage.getStorageSync('token') != null) {
+      this.$router.push('/main')
     }
   },
   methods: {
     login(email, password) {
+
       console.log(email);
       console.log(password);
       const data = {
@@ -65,10 +71,9 @@ export default {
           .then((data) => {
             console.log(data);
 
-            this.token = data.accessToken;
-            alert(this.token)
+              this.$storage.setStorageSync("token", data.accessToken)
+              this.$router.push('/main');
 
-            this.$router.push('/main');
           })
           .catch(err => console.error(err))
     }
