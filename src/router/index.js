@@ -6,6 +6,8 @@ import Main from "@/components/Main";
 import Profile from "@/components/Profile";
 import Stats from "@/components/Stats";
 import AccountConfig from "@/components/AccountConfig";
+import Timeline from "@/components/Timeline";
+import FriendZone from "@/components/FriendZone";
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
     path: '/accountConfig',
     name: 'accountConfig',
     component: AccountConfig
+  },
+  {
+    path: '/timeline',
+    name: 'timeline',
+    component: Timeline
+  },
+  {
+    path: '/friendZone',
+    name: 'friendzone',
+    component: FriendZone
   }
 ]
 

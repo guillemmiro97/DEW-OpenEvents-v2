@@ -8,15 +8,16 @@
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
-        <a href="account_config.html">Account configuration</a>
+        <router-link to="/accountConfig">Account configuration</router-link>
         <a href="#">Logout</a>
       </div>
     </div>
   </header>
+
   <main>
     <div class="flex-container-boxes">
-      <a href="friend_zone/list_friends.html">Friend zone</a>
-      <a v-on:click="showToken()">Events</a>
+      <a v-on:click="goToRoute('friendzone')">Friend zone</a>
+      <a v-on:click="goToRoute('timeline')">Events</a>
     </div>
   </main>
   <footer>
@@ -41,9 +42,8 @@ export default {
     }
   },
   methods: {
-    showToken() {
-      let token = this.$storage.getStorageSync('token')
-      alert(token)
+    goToRoute(route) {
+      this.$router.push('/'+route)
     }
   }
 
