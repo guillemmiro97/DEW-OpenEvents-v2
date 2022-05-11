@@ -20,7 +20,9 @@
 
       <div class="flex-form-register">
         <div class="flex-items-register"><a>Not registered?</a></div>
-        <div class="flex-items-register"><router-link to="/register">Register</router-link></div>
+        <div class="flex-items-register">
+          <router-link to="/register">Register</router-link>
+        </div>
       </div>
     </section>
 
@@ -46,7 +48,7 @@ export default {
     }
   },
   created() {
-    if(this.$storage.getStorageSync('token') != null) {
+    if (this.$storage.getStorageSync('token') != null) {
       this.$router.push('/main')
     }
   },
@@ -71,15 +73,32 @@ export default {
           .then((data) => {
             console.log(data);
 
-              this.$storage.setStorageSync("token", data.accessToken)
-              this.$router.push('/main');
+            //session storage
+            this.$storage.setStorageSync("token", data.accessToken)
+            this.getUserData(email)
+
+            this.$router.push('/main');
 
           })
           .catch(err => console.error(err))
+    },
+    getUserData(email) {
+      fetch('http://puigmal.salle.url.edu/api/v2/users/search?' + "s=" + email,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+            this.$storage.setStorageSync("user", data[0])
+          })
     }
   }
-
 }
+
 </script>
 
 <style scoped>
