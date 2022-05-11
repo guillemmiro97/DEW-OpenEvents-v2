@@ -14,9 +14,7 @@
     </div>
   </header>
 
-
   <h2 class="flex-container-update">Account Stats</h2>
-
 
   <main class="flex-form-container">
     <table>

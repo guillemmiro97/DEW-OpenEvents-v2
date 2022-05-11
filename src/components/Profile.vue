@@ -9,7 +9,7 @@
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
-        <a href="account_config.html">Account configuration</a>
+        <router-link to="/accountConfig">Account configuration</router-link>
         <a href="#">Logout</a>
       </div>
     </div>
