@@ -16,69 +16,69 @@
 
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
-  <!-- <main>
-     <h1>Timeline</h1>
-     <div class="flex-timeline-container">
-       <form class="flex-search-container">
-         <label>
-           <input type="text" placeholder="Name of Event" name="name" required>
-         </label>
-         <button type="submit">Search</button>
-       </form>
-       <section class="flex-events-timeline-container">
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-       </section>
-     </div>
-   </main>
 
-   <footer>
-     <div class="flex-container-icons">
-       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-google" style="color: white"></a></div>
-     </div>
-   </footer>-->
+  <main>
+    <h1>Create Event</h1>
+    <form class="flex-form-container">
+      <input v-model="event.name" type="text" placeholder="Name" name="name" required>
+      <input v-model="event.image" type="text" placeholder="Image of event" name="picevent" required>
+      <input v-model="event.location" type="text" placeholder="Location" name="location" required>
+      <textarea v-model="event.description" name="description">Description of Event</textarea>
+      <input v-model="event.eventStart_date" type="text" placeholder="Starting Date" name="startdate" required>
+      <input v-model="event.eventEnd_date" type="text" placeholder="Finishing Date" name="finishdate" required>
+      <input v-model="event.n_participators" type="text" placeholder="Number of Participants" name="participants" required>
+      <input v-model="event.type" type="text" placeholder="Type of Event" name="Type of Event" required>
+
+      <button v-on:click.prevent="createEvent()" type="submit">Create Event</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="flex-container-icons">
+      <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-google" style="color: white"></a></div>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
-  name: "TimelineComponent",
+  name: "CreateEvent",
   methods: {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
+    },
+    createEvent() {
+      fetch('http://puigmal.salle.url.edu/api/v2/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+        },
+        body: JSON.stringify(this.event)
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+            alert("Event created successfully "+ data.name)
+          })
+          .catch(err => console.error(err))
     }
   },
   data() {
     return {
+      event: {
+        name: "Drawing 101: Portraits",
+        image: "https://i.imgur.com/JprpLyc.jpg",
+        location: "Barcelona",
+        description: "Learn the basics of portrait drawing with a" +
+            "professional artist with +10 years of experience.",
+        eventStart_date: "2022-01-20T12:00:00.000Z",
+        eventEnd_date: "2022-01-20T13:30:00.000Z",
+        n_participators: "20",
+        type: "Education"
+      },
       menu: [
         {
           header: 'Main Navigation',
@@ -99,8 +99,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <style scoped>
@@ -167,14 +165,27 @@ body {
   background-color: #EFEFEF;
 }
 
+.flex-form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 
-input[type=text], input[type=password] {
-  width: 100%;
+}
+
+input[type=text], input[type=password], textarea {
+  width: 25%;
   padding: 12px 200px 12px 40px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+textarea {
+  height: 8em;
 }
 
 button {
@@ -187,7 +198,6 @@ button {
   width: 10%;
   border-radius: 8%;
 }
-
 button:hover {
   opacity: 0.8;
 }
@@ -232,73 +242,12 @@ button:hover {
 main {
   transition: 0.5s;
   font-family: Calibri, serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
 }
 
-main h1, h2 {
+main h1 {
   display: flex;
   justify-content: center;
   flex-direction: row;
-}
-
-.flex-search-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 1%;
-  margin-left: 5%;
-  align-items: baseline;
-}
-
-
-main section {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-search-container label {
-  flex: 25;
-}
-
-.flex-search-container button {
-  flex: 1;
-  margin-right: 2%;
-}
-
-.flex-events-timeline-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-}
-
-.flex-event-detail {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  color: #111111;
-  width: 80%;
-  border-style: groove;
-  justify-content: space-evenly;
-
-  align-items: center;
-  margin-left: 5%;
-}
-
-.flex-event-data1 {
-  margin-left: 5%;
-  flex: 3;
-}
-
-.flex-event-data2 {
-  border: groove;
-  flex: 1;
-  margin-right: 5%;
-  height: 100px;
-  text-align: justify;
-  padding: 5px;
 }
 
 footer {

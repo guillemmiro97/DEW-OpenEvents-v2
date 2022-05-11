@@ -8,6 +8,7 @@ import Stats from "@/components/Stats";
 import AccountConfig from "@/components/AccountConfig";
 import Timeline from "@/components/Timeline";
 import FriendZone from "@/components/FriendZone";
+import CreateEvent from "@/components/CreateEvent";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: '/timeline',
     name: 'timeline',
     component: Timeline
+  },
+  {
+    path: '/createEvent',
+    name: 'createEvent',
+    component: CreateEvent
   },
   {
     path: '/friendZone',
