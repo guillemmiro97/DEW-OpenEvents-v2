@@ -4,7 +4,7 @@
       <router-link to="/main">OpenEvents</router-link>
     </div>
     <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
+      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
@@ -44,7 +44,12 @@
 
 <script>
 export default {
-  name: "AccountConfigComponent"
+  name: "AccountConfigComponent",
+  methods: {
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
+    }
+  }
 }
 </script>
 

@@ -4,7 +4,7 @@
       <router-link to="/main">OpenEvents</router-link>
     </div>
     <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
+      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
@@ -50,7 +50,12 @@
 
 <script>
 export default {
-  name: "StatsComponent"
+  name: "StatsComponent",
+  methods: {
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
+    }
+  }
 }
 </script>
 
@@ -73,21 +78,22 @@ export default {
   width: 5%;
 }
 
-.header-title a{
+.header-title a {
   text-decoration: none;
   color: black;
 }
-.dropdown{
+
+.dropdown {
   background-color: whitesmoke;
   border-radius: 50%;
   font-family: Verdana, serif;
 }
 
-.dropdown-content{
-  display:none;
+.dropdown-content {
+  display: none;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
   display: flex;
@@ -98,12 +104,12 @@ export default {
   overflow: hidden;
 }
 
-.dropdown-content a{
+.dropdown-content a {
   padding: 10px;
   text-decoration: none;
 }
 
-.dropdown-content a:hover{
+.dropdown-content a:hover {
   background-color: #8080801c;
 }
 
@@ -117,7 +123,7 @@ body {
   background-color: #EFEFEF;
 }
 
-.flex-container-update{
+.flex-container-update {
   font-family: Calibri, serif;
   font-size: x-large;
   display: flex;
@@ -162,7 +168,6 @@ button:hover {
 }
 
 
-
 table {
   font-family: Calibri, serif;
   border-collapse: collapse;
@@ -174,7 +179,6 @@ td, th {
   text-align: center;
   padding: 8px;
 }
-
 
 
 .flex-container {
@@ -226,6 +230,7 @@ footer {
 .fa-google {
   background: #dd4b39;
 }
+
 .flex-container-icons {
   display: flex;
   flex-direction: row;

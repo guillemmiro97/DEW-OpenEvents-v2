@@ -4,7 +4,7 @@
       <router-link to="/main">OpenEvents</router-link>
     </div>
     <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
+      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
@@ -44,6 +44,9 @@ export default {
   methods: {
     goToRoute(route) {
       this.$router.push('/'+route)
+    },
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
     }
   }
 

@@ -5,7 +5,7 @@
     </div>
     <!---Menu de usuario-->
     <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" src="../assets/profile_picture.webp">
+      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
       <div class="dropdown-content">
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
@@ -30,8 +30,10 @@
           <h2>email@gmail.com</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+            ridiculus mus.
+            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
+            odio.</p>
         </div>
       </div>
     </section>
@@ -48,7 +50,12 @@
 
 <script>
 export default {
-  name: "ProfileComponent"
+  name: "ProfileComponent",
+  methods: {
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
+    }
+  }
 }
 </script>
 
@@ -71,21 +78,22 @@ export default {
   width: 5%;
 }
 
-.header-title a{
+.header-title a {
   text-decoration: none;
   color: black;
 }
-.dropdown{
+
+.dropdown {
   background-color: whitesmoke;
   border-radius: 50%;
   font-family: Verdana, serif;
 }
 
-.dropdown-content{
-  display:none;
+.dropdown-content {
+  display: none;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
   display: flex;
@@ -96,12 +104,12 @@ export default {
   overflow: hidden;
 }
 
-.dropdown-content a{
+.dropdown-content a {
   padding: 10px;
   text-decoration: none;
 }
 
-.dropdown-content a:hover{
+.dropdown-content a:hover {
   background-color: #8080801c;
 }
 
@@ -115,7 +123,7 @@ body {
   background-color: #EFEFEF;
 }
 
-.flex-container-update{
+.flex-container-update {
   font-family: Calibri, serif;
   font-size: x-large;
   display: flex;
@@ -160,7 +168,6 @@ button:hover {
 }
 
 
-
 table {
   font-family: Calibri, serif;
   border-collapse: collapse;
@@ -173,7 +180,7 @@ td, th {
   padding: 8px;
 }
 
-main{
+main {
   transition: 0.5s;
   font-family: Calibri, serif;
   display: flex;
@@ -181,13 +188,13 @@ main{
   justify-content: center;
 }
 
-main h1{
+main h1 {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
-main h2{
+main h2 {
   display: flex;
   justify-content: left;
   flex-direction: row;
@@ -249,6 +256,7 @@ footer {
 .fa-google {
   background: #dd4b39;
 }
+
 .flex-container-icons {
   display: flex;
   flex-direction: row;
