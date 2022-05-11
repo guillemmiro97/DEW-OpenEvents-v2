@@ -21,19 +21,12 @@
       <h1>Profile</h1>
       <div class="flex-container">
         <div class="flex-item">
-          <img class="event-location-image" src="../assets/profile_picture.webp" alt="Profile picture">
+          <img class="event-location-image" :src="getProfileImage()" alt="Profile picture">
         </div>
         <div class="flex-item">
-          <h2>Name</h2>
-          <h2>Last Name</h2>
-          <h2>Date of birth</h2>
-          <h2>email@gmail.com</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-            Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus.
-            Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
-            odio.</p>
+          <h2>{{ name }}</h2>
+          <h2>{{ lastName }}</h2>
+          <h2>{{ email }}</h2>
         </div>
       </div>
     </section>
@@ -51,6 +44,13 @@
 <script>
 export default {
   name: "ProfileComponent",
+  data() {
+    return {
+      name: this.$storage.getStorageSync("user").name,
+      lastName: this.$storage.getStorageSync("user").last_name,
+      email: this.$storage.getStorageSync("user").email,
+    }
+  },
   methods: {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image

@@ -40,7 +40,6 @@
 export default {
   name: "LoginComponent",
 
-
   data() {
     return {
       email: 'test@test.com',
