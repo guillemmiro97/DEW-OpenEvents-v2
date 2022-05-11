@@ -29,9 +29,9 @@
       </thead>
       <tbody>
       <tr>
-        <td>100 points</td>
-        <td>54863</td>
-        <td>85%</td>
+        <td>{{ this.stats.avg_points }} points</td>
+        <td>{{ this.stats.num_comments }}</td>
+        <td>{{ this.stats.percentage }}%</td>
       </tr>
       </tbody>
 
@@ -51,10 +51,52 @@
 <script>
 export default {
   name: "StatsComponent",
+  data() {
+    return {
+      stats: {
+        avg_points: "",
+        num_comments: "",
+        percentage: "",
+      }
+    }
+  },
   methods: {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
+    },
+    getStats() {
+      let url = "http://puigmal.salle.url.edu/api/v2/users/" + this.$storage.getStorageSync("user").id + "/statistics"
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+
+            if (data.avg_points != null) {
+              this.stats.avg_points = data.avg_points;
+            } else {
+              this.stats.avg_points = "No";
+            }
+            if (data.num_comments != null) {
+              this.stats.num_comments = data.num_comments;
+            } else {
+              this.stats.num_comments = "0";
+            }
+            if (data.percentage != null) {
+              this.stats.percentage = data.percentage;
+            } else {
+              this.stats.percentage = "0";
+            }
+          })
     }
+  },
+  created() {
+    this.getStats()
   }
 }
 </script>
