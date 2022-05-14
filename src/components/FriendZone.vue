@@ -60,14 +60,14 @@
        </section>
      </div>
    </main>
-
+-->
    <footer>
      <div class="flex-container-icons">
        <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
        <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
        <div><a href="#" class="fa fa-google" style="color: white"></a></div>
      </div>
-   </footer>-->
+   </footer>
 </template>
 
 <script>

@@ -16,6 +16,11 @@
 
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
+  <ul>
+    <EventItem v-for="event in events" :key="event.id"
+               :eventName="event.name"
+    />
+  </ul>
   <!-- <main>
      <h1>Timeline</h1>
      <div class="flex-timeline-container">
@@ -59,26 +64,53 @@
        </section>
      </div>
    </main>
-
-   <footer>
-     <div class="flex-container-icons">
-       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-google" style="color: white"></a></div>
-     </div>
-   </footer>-->
+-->
+  <footer>
+    <div class="flex-container-icons">
+      <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-google" style="color: white"></a></div>
+    </div>
+  </footer>
 </template>
 
 <script>
+
+import EventItem from "@/components/EventItem";
+
 export default {
   name: "TimelineComponent",
+  components: {EventItem},
   methods: {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
-    }
+    },
+
   },
   data() {
+    function getEventsFromApi() {
+      let eventsRes = [];
+      fetch('http://puigmal.salle.url.edu/api/v2/events', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+          .then(res => res.json())
+          .then((data) => {
+            for (let i = 0; i < data.length ; i++) {
+              eventsRes.push(data[i]);
+            }
+            console.log(eventsRes);
+
+          })
+          .catch(err => console.error(err))
+
+      return eventsRes
+    }
+
     return {
+      events: getEventsFromApi(),
       menu: [
         {
           header: 'Main Navigation',
