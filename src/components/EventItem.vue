@@ -1,6 +1,7 @@
 <template>
   <li>
     <div class="flex-events-timeline-container">
+      <img class="flex-events-timeline-image" :src="eventImage" alt="Event image"/>
       <div class="flex-event-data1">
         <h3>{{ eventName }}</h3>
         <p>{{ eventLocation }}</p>
@@ -20,7 +21,8 @@ export default {
     'eventName',
     'eventLocation',
     'eventStartHour',
-    'eventDescription'
+    'eventDescription',
+    'eventImage'
   ]
 }
 </script>
@@ -51,6 +53,13 @@ export default {
   height: 100px;
   text-align: justify;
   padding: 5px;
+}
+
+.flex-events-timeline-image {
+  width: 100px;
+  height: 100px;
+  border: groove;
+  margin-right: 5%;
 }
 
 </style>

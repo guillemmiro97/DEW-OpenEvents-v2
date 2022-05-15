@@ -17,54 +17,15 @@
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
   <ul>
-    <EventItem v-for="event in events" :key="event.id"
+    <EventItem v-for="event in events"
+               :key="event.id"
                :eventName="event.name"
-    />
+               :event-location="event.location"
+               :event-start-hour="event.eventStart_date"
+               :event-description="event.description"
+               :event-image="event.image"
+    ></EventItem>
   </ul>
-  <!-- <main>
-     <h1>Timeline</h1>
-     <div class="flex-timeline-container">
-       <form class="flex-search-container">
-         <label>
-           <input type="text" placeholder="Name of Event" name="name" required>
-         </label>
-         <button type="submit">Search</button>
-       </form>
-       <section class="flex-events-timeline-container">
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-       </section>
-     </div>
-   </main>
--->
   <footer>
     <div class="flex-container-icons">
       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
@@ -80,37 +41,12 @@ import EventItem from "@/components/EventItem";
 
 export default {
   name: "TimelineComponent",
-  components: {EventItem},
-  methods: {
-    getProfileImage() {
-      return this.$storage.getStorageSync("user").image
-    },
-
+  components: {
+    EventItem
   },
   data() {
-    function getEventsFromApi() {
-      let eventsRes = [];
-      fetch('http://puigmal.salle.url.edu/api/v2/events', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-          .then(res => res.json())
-          .then((data) => {
-            for (let i = 0; i < data.length ; i++) {
-              eventsRes.push(data[i]);
-            }
-            console.log(eventsRes);
-
-          })
-          .catch(err => console.error(err))
-
-      return eventsRes
-    }
-
     return {
-      events: getEventsFromApi(),
+      events: [],
       menu: [
         {
           header: 'Main Navigation',
@@ -129,6 +65,39 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
+    },
+    getEvents(){
+      let eventsRes = [];
+      fetch('http://puigmal.salle.url.edu/api/v2/events', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+          .then(res => res.json())
+          .then((data) => {
+            for (let i = 0; i < data.length ; i++) {
+              //check if the event has a picture, if not, use the default one
+              if (data[i].image.toLowerCase().indexOf("http") === -1) {
+                data[i].image = "https://www.onlineontime.es/wp-content/uploads/2018/04/cuestionario-evento.png";
+              }
+              eventsRes.push(data[i]);
+            }
+            this.events = eventsRes;
+            console.log(this.events);
+          })
+          .catch(err => console.error(err))
+
+      return eventsRes
+    }
+
+  },
+  created() {
+    this.getEvents();
   }
 }
 
