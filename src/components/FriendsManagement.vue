@@ -14,7 +14,6 @@
     </div>
   </header>
 
-
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
 
@@ -23,7 +22,7 @@
     <h1>Friends management</h1>
 
     <div class="search-bar">
-      <input  v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
+      <input v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
       <button v-on:click.prevent="searchFriends(searchdata)" class="submit"><i class="fa fa-search"></i></button>
     </div>
     <section>
@@ -31,13 +30,21 @@
           v-for="friend in friends"
           :key="friend.id"
           :friend-name="friend.name"
+          :friend-lastname="friend.last_name"
           :friend-email="friend.email"
           :friend-photo="friend.image"
       />
     </section>
     <section>
       <h2>Pending friend requests</h2>
-
+      <FriendManagementDelete
+          v-for="friend in pending"
+          :key="friend.id"
+          :friend-name="friend.name"
+          :friend-lastname="friend.last_name"
+          :friend-email="friend.email"
+          :friend-photo="friend.image"
+      />
     </section>
   </main>
 
@@ -54,13 +61,15 @@
 <script>
 
 import FriendManagementAdd from "@/components/FriendManagementAdd";
+import FriendManagementDelete from "@/components/FriendManagementDelete";
 
 export default {
   name: "FriendZoneComponent",
-  components: {FriendManagementAdd},
+  components: {FriendManagementAdd, FriendManagementDelete},
   data() {
     return {
       friends: [],
+      pending: [],
       searchdata: '',
       menu: [
         {
@@ -83,11 +92,11 @@ export default {
 
     }
   },
-  methods:{
+  methods: {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
     },
-    getFriendsFromAPI(){
+    getFriendsFromAPI() {
       fetch('http://puigmal.salle.url.edu/api/v2/users', {
         method: 'GET',
         headers: {
@@ -109,8 +118,8 @@ export default {
           })
           .catch(err => console.error(err))
     },
-    searchFriends(){
-      fetch('http://puigmal.salle.url.edu/api/v2/users/search?s='+this.searchdata, {
+    searchFriends() {
+      fetch('http://puigmal.salle.url.edu/api/v2/users/search?s=' + this.searchdata, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -132,10 +141,33 @@ export default {
             console.log(this.friends);
           })
           .catch(err => console.error(err))
-    }
+    },
+    getPendingFriendRequests() {
+      fetch('http://puigmal.salle.url.edu/api/v2/friends/requests', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            data.map(friend => {
+              if (friend.image.toLowerCase().indexOf("http") === -1) {
+                friend.image = "https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?s=612x612";
+              }
+              this.pending.push(friend);
+            })
+
+            console.log(this.pending);
+          })
+          .catch(err => console.error(err))
+    },
   },
   created() {
     this.getFriendsFromAPI();
+    this.getPendingFriendRequests();
   }
 
 }
@@ -285,7 +317,7 @@ main h1, h2 {
   margin-right: 2%;
 }
 
-main{
+main {
   margin-left: 15%;
   margin-right: 15%;
 }

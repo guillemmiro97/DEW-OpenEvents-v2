@@ -3,7 +3,7 @@
     <img class="friend-photo" alt="Friend photo" :src=this.friendPhoto>
     <h4>{{ this.friendName }} {{this.friendLastname}}</h4>
     <p>{{ this.friendEmail }}</p>
-    <button type="submit">Add</button>
+    <button type="submit">Delete</button>
   </div>
 </template>
 
