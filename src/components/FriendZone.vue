@@ -88,12 +88,12 @@ export default {
         {
           href: '/listOfFriends',
           title: 'List of Friends',
-          icon: 'fa fa-user'
+          icon: ''
         },
         {
           href: '/friendsManagement',
           title: 'Friends Management',
-          icon: 'fa fa-chart-area'
+          icon: ''
 
         }
       ],

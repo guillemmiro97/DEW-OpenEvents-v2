@@ -56,12 +56,12 @@ export default {
         {
           href: '/createEvent',
           title: 'Create Event',
-          icon: 'fa fa-user'
+          icon: ''
         },
         {
           href: '/timeline',
           title: 'Timeline',
-          icon: 'fa fa-chart-area'
+          icon: ''
 
         }
       ]
