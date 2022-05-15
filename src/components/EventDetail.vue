@@ -1,36 +1,28 @@
 <template>
+  <!-- navbar -->
+  <sidebar-menu :menu="menu"/>
   <div class="event-detail">
     <div class="event-detail__header">
       <div class="event-detail__header-left">
         <div class="event-detail__header-left-title">
-          <h1>Event</h1>
+          <h1>{{ this.event.name }}</h1>
         </div>
         <div class="event-detail__header-left-date">
-          <span>Fecha</span>
+          <span>{{ this.event.date }}</span>
         </div>
       </div>
       <div class="event-detail__header-right">
         <div class="event-detail__header-right-location">
-          <span>Location</span>
-        </div>
-        <div class="event-detail__header-right-time">
-                    <span>
-                      Time
-                    </span>
+          <span>{{ this.event.location }}</span>
         </div>
       </div>
     </div>
     <div class="event-detail__body">
       <div class="event-detail__body-description">
-        <p>Description sdnsjjfos</p>
+        <p>{{ this.event.description }}</p>
       </div>
-      <div class="event-detail__body-attendees">
-        <div class="event-detail__body-attendees-title">
-          <h2>Attendees</h2>
-        </div>
-        <div class="event-detail__body-attendees-list">
-          <span>Atendees</span>
-        </div>
+      <div class="event-detail__body-image">
+        <img :src=this.event.image alt="Event image">
       </div>
     </div>
   </div>
@@ -38,7 +30,48 @@
 
 <script>
 export default {
-  name: "EventDetail"
+  name: "EventDetail",
+  data() {
+    return {
+      event: [],
+      menu: [
+        {
+          header: 'Main Navigation',
+          hiddenOnCollapse: true,
+        },
+        {
+          href: '/createEvent',
+          title: 'Create Event',
+          icon: ''
+        },
+        {
+          href: '/timeline',
+          title: 'Timeline',
+          icon: ''
+
+        }
+      ]
+    }
+  },
+  methods: {
+    getEventData() {
+      fetch('http://puigmal.salle.url.edu/api/v2/events/' + this.$storage.getStorageSync('eventId'), {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+          .then(res => res.json())
+          .then((data) => {
+            this.event = data[0];
+            console.log(this.event);
+          })
+          .catch(err => console.error(err))
+    }
+  },
+  async created() {
+    this.getEventData();
+  }
 }
 </script>
 
@@ -133,5 +166,17 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   color: #000;
+}
+
+.event-detail__body-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 50%;
+  height: 50%;
 }
 </style>
