@@ -43,7 +43,7 @@ export default {
   methods: {
     register(name, last_name, email, password, confirm_paswd, image) {
 
-      if (password === confirm_paswd && password.length > 8) {
+      if (password === confirm_paswd && password.length >= 8) {
         const data = {
           name: name,
           last_name: last_name,

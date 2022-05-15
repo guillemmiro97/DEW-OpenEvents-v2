@@ -29,6 +29,7 @@
       <FriendManagementAdd
           v-for="friend in friends"
           :key="friend.id"
+          :friend-id="friend.id"
           :friend-name="friend.name"
           :friend-lastname="friend.last_name"
           :friend-email="friend.email"
@@ -37,7 +38,7 @@
     </section>
     <section>
       <h2>Pending friend requests</h2>
-      <FriendManagementDelete
+      <FriendsManagementAccept
           v-for="friend in pending"
           :key="friend.id"
           :friend-id="friend.id"
@@ -62,11 +63,11 @@
 <script>
 
 import FriendManagementAdd from "@/components/FriendManagementAdd";
-import FriendManagementDelete from "@/components/FriendManagementDelete";
+import FriendsManagementAccept from "@/components/FriendsManagementAccept";
 
 export default {
   name: "FriendZoneComponent",
-  components: {FriendManagementAdd, FriendManagementDelete},
+  components: {FriendManagementAdd, FriendsManagementAccept},
   data() {
     return {
       friends: [],

@@ -3,13 +3,13 @@
     <img class="friend-photo" alt="Friend photo" :src=this.friendPhoto>
     <h4>{{ this.friendName }} {{ this.friendLastname }}</h4>
     <p>{{ this.friendEmail }}</p>
-    <button v-on:click.prevent="addFriend()" type="submit">Add</button>
+    <button v-on:click.prevent="acceptFriend()" type="submit">Accept</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "FriendManagementAdd",
+  name: "FriendsManagementAccept",
   props: [
     'friendId',
     'friendName',
@@ -18,9 +18,9 @@ export default {
     'friendPhoto'
   ],
   methods: {
-    addFriend() {
+    acceptFriend() {
       fetch('http://puigmal.salle.url.edu/api/v2/friends/' + this.friendId, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
@@ -30,9 +30,7 @@ export default {
           .then((data) => {
             console.log(data);
             if (data.affectedRows === 1) {
-              alert('Friend request to ' + this.friendName + ' ' + this.friendLastname + ' has been sent');
-            } else if (data.Error === "Error") {
-              alert('Friend request to ' + this.friendName + ' ' + this.friendLastname + ' has already been sent');
+              alert('Friend request accepted');
             }
           })
           .catch(err => console.error(err))
@@ -61,7 +59,7 @@ export default {
 }
 
 button {
-  background-color: lightgray;
+  background-color: darkseagreen;
   color: white;
   padding: 14px 20px;
   margin: 10px 0;
