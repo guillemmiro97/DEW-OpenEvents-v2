@@ -30,11 +30,10 @@
     <section>
       <FriendManagementAdd
           v-for="friend in friends"
-          :friend="friend"
           :key="friend.id"
-          :friendName="friend.name"
-          :friendEmail="friend.email"
-          :friendPhoto="friend.image"
+          :friend-name="friend.name"
+          :friend-email="friend.email"
+          :friend-photo="friend.image"
       />
     </section>
     <section>
@@ -99,8 +98,13 @@ export default {
       })
           .then(res => res.json())
           .then((data) => {
-            console.log(data);
-            this.friends = data
+            data.map(friend => {
+              if (friend.image.toLowerCase().indexOf("http") === -1) {
+                friend.image = "https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?s=612x612";
+              }
+              this.friends.push(friend);
+            })
+
             console.log(this.friends);
           })
           .catch(err => console.error(err))
