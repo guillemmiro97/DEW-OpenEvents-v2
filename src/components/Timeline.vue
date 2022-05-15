@@ -16,6 +16,14 @@
 
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
+  <div class="flex-search-container">
+    <div class="col-md-12">
+      <div class="search-bar">
+        <input  v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
+        <button v-on:click.prevent="searchEvents(searchdata)" class="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
   <ul>
     <EventItem v-for="event in events"
                :key="event.id"
@@ -48,6 +56,7 @@ export default {
   data() {
     return {
       events: [],
+      searchdata: "",
       menu: [
         {
           header: 'Main Navigation',
@@ -75,11 +84,34 @@ export default {
       fetch('http://puigmal.salle.url.edu/api/v2/events', {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
         },
       })
           .then(res => res.json())
           .then((data) => {
+            for (let i = 0; i < data.length; i++) {
+              //check if the event has a picture, if not, use the default one
+              if (data[i].image.toLowerCase().indexOf("http") === -1) {
+                data[i].image = "https://www.onlineontime.es/wp-content/uploads/2018/04/cuestionario-evento.png";
+              }
+              this.events.push(data[i]);
+            }
+            console.log(this.events);
+          })
+          .catch(err => console.error(err))
+    },
+    searchEvents() {
+      fetch('http://puigmal.salle.url.edu/api/v2/events/search?keyword=' + this.searchdata, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+        },
+      })
+          .then(res => res.json())
+          .then((data) => {
+            this.events = [];
             for (let i = 0; i < data.length; i++) {
               //check if the event has a picture, if not, use the default one
               if (data[i].image.toLowerCase().indexOf("http") === -1) {
@@ -165,7 +197,6 @@ body {
   background-color: #EFEFEF;
 }
 
-
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 200px 12px 40px;
@@ -178,11 +209,9 @@ input[type=text], input[type=password] {
 button {
   background-color: lightgray;
   color: white;
-  padding: 14px 20px;
   margin: 10px 0;
   border: none;
   cursor: pointer;
-  width: 10%;
   border-radius: 8%;
 }
 
@@ -229,6 +258,7 @@ main h1, h2 {
 
 .flex-search-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   gap: 1%;
   margin-left: 5%;
@@ -248,6 +278,15 @@ main section {
 .flex-search-container button {
   flex: 1;
   margin-right: 2%;
+  margin-left: 2%;
+}
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  padding: 12px 20px;
+  margin: 8px 0;
+  flex-direction: row;
 }
 
 footer {
