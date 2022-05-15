@@ -1,9 +1,9 @@
 <template>
   <div class="flex-friend-data">
     <img class="friend-photo" alt="Friend photo" :src=this.friendPhoto>
-    <h4>{{ this.friendName }} {{this.friendLastname}}</h4>
-    <p>{{ this.friendEmail }}</p>
-    <button type="submit">Add</button>
+    <h4>{{ this.friendName }} {{ this.friendLastname }}</h4>
+    <p>{{friendId}} {{ this.friendEmail }}</p>
+    <button v-on:click.prevent="addFriend()" type="submit">Add</button>
   </div>
 </template>
 
@@ -11,11 +11,28 @@
 export default {
   name: "FriendManagementAdd",
   props: [
+    'friendId',
     'friendName',
     'friendLastname',
     'friendEmail',
     'friendPhoto'
-  ]
+  ],
+  methods: {
+    addFriend() {
+      fetch('http://puigmal.salle.url.edu/api/v2/friends/' + this.friendId, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch(err => console.error(err))
+    }
+  }
 
 }
 </script>

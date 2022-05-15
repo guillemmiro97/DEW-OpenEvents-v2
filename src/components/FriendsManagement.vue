@@ -40,6 +40,7 @@
       <FriendManagementDelete
           v-for="friend in pending"
           :key="friend.id"
+          :friend-id="friend.id"
           :friend-name="friend.name"
           :friend-lastname="friend.last_name"
           :friend-email="friend.email"
