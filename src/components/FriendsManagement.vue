@@ -17,50 +17,33 @@
 
   <!-- navbar -->
   <sidebar-menu :menu="menu"/>
-  <!-- <main>
-     <h1>Timeline</h1>
-     <div class="flex-timeline-container">
-       <form class="flex-search-container">
-         <label>
-           <input type="text" placeholder="Name of Event" name="name" required>
-         </label>
-         <button type="submit">Search</button>
-       </form>
-       <section class="flex-events-timeline-container">
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-         <a href="detailed_event.html" class="flex-event-detail">
-           <div class="flex-event-data1">
-             <h3>Name of event</h3>
-             <p>Location</p>
-             <p>Starting Hour</p>
-           </div>
-           <div class="flex-event-data2">
-             <p>Description of event</p>
-           </div>
-         </a>
-       </section>
-     </div>
-   </main>
--->
+
+  <main>
+
+    <h1>Friends management</h1>
+    <form class="flex-search-container">
+      <label>
+        <input type="text" placeholder="Username/Friend name" name="name" required>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <section>
+      <FriendManagementAdd
+          v-for="friend in friends"
+          :friend="friend"
+          :key="friend.id"
+          :friendName="friend.name"
+          :friendEmail="friend.email"
+          :friendPhoto="friend.image"
+      />
+    </section>
+    <section>
+      <h2>Pending friend requests</h2>
+
+    </section>
+  </main>
+
+
   <footer>
     <div class="flex-container-icons">
       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
@@ -71,15 +54,15 @@
 </template>
 
 <script>
+
+import FriendManagementAdd from "@/components/FriendManagementAdd";
+
 export default {
   name: "FriendZoneComponent",
-  methods: {
-    getProfileImage() {
-      return this.$storage.getStorageSync("user").image
-    }
-  },
+  components: {FriendManagementAdd},
   data() {
     return {
+      friends: [],
       menu: [
         {
           header: 'Main Navigation',
@@ -100,7 +83,33 @@ export default {
       collapsed: true,
 
     }
+  },
+  methods:{
+    getProfileImage() {
+      return this.$storage.getStorageSync("user").image
+    },
+    getFriendsFromAPI(){
+      fetch('http://puigmal.salle.url.edu/api/v2/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data);
+            this.friends = data
+            console.log(this.friends);
+          })
+          .catch(err => console.error(err))
+    }
+  },
+  created() {
+    this.getFriendsFromAPI();
   }
+
 }
 </script>
 
@@ -152,7 +161,6 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
-  color: inherit;
 }
 
 .dropdown-content a:hover {
@@ -167,19 +175,6 @@ export default {
 
 body {
   background-color: #EFEFEF;
-}
-
-.flex-form-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-}
-
-form {
-  border: 3px solid black;
 }
 
 input[type=text], input[type=password] {
@@ -204,21 +199,6 @@ button {
 
 button:hover {
   opacity: 0.8;
-}
-
-
-.side-nav {
-  height: 82%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  background-color: #111;
-  opacity: 0.6;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s
 }
 
 .side-nav a {
@@ -246,63 +226,60 @@ button:hover {
 main {
   transition: 0.5s;
   font-family: Calibri, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
-main h2 {
+main h1, h2 {
   display: flex;
   justify-content: center;
   flex-direction: row;
+}
+
+.flex-search-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 1%;
+  margin-left: 5%;
+  align-items: baseline;
+}
+
+.flex-search-container label {
+  flex: 25;
+}
+
+.flex-search-container button {
+  flex: 1;
+  margin-right: 2%;
 }
 
 main section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 25px;
-
-}
-
-main section article {
-  display: flex;
-  margin-left: 20%;
-  border-style: groove;
-  width: 60%;
-
-}
-
-.flex-friend-data {
-  justify-content: flex-start;
-}
-
-.flex-list-container {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.remove-friend-link {
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 4%;
-  border-color: #b30007;
-  background-color: #b30000;
-  border-style: groove;
-  margin-bottom: 10px;
-  position: absolute;
-  right: 25%;
-}
-
-.remove-friend-link:hover {
-  opacity: 0.7;
-  transition: 0.5s;
 }
 
 .friend-photo {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flex-friend-data {
+  display: flex;
+  width: 92%;
+  border-style: groove;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 5%;
+  flex: 25;
 }
 
 footer {

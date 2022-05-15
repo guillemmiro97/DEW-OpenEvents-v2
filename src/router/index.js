@@ -7,7 +7,7 @@ import Profile from "@/components/Profile";
 import Stats from "@/components/Stats";
 import AccountConfig from "@/components/AccountConfig";
 import Timeline from "@/components/Timeline";
-import FriendZone from "@/components/FriendZone";
+import FriendsManagement from "@/components/FriendsManagement";
 import CreateEvent from "@/components/CreateEvent";
 import EventDetail from "@/components/EventDetail";
 
@@ -53,9 +53,9 @@ const routes = [
         component: CreateEvent
     },
     {
-        path: '/friendZone',
-        name: 'friendzone',
-        component: FriendZone
+        path: '/friendsManagement',
+        name: 'friendsManagement',
+        component: FriendsManagement
     },
     {
         path: '/eventDetail',

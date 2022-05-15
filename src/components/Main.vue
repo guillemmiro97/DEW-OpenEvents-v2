@@ -16,7 +16,7 @@
 
   <main>
     <div class="flex-container-boxes">
-      <a v-on:click="goToRoute('friendzone')">Friend zone</a>
+      <a v-on:click="goToRoute('friendsManagement')">Friend zone</a>
       <a v-on:click="goToRoute('timeline')">Events</a>
     </div>
   </main>
