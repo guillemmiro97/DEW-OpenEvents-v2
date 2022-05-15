@@ -9,6 +9,7 @@ import AccountConfig from "@/components/AccountConfig";
 import Timeline from "@/components/Timeline";
 import FriendZone from "@/components/FriendZone";
 import CreateEvent from "@/components/CreateEvent";
+import EventDetail from "@/components/EventDetail";
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
     path: '/friendZone',
     name: 'friendzone',
     component: FriendZone
+  },
+  {
+    path: '/eventDetail',
+    name: 'eventDetail',
+    component: EventDetail
   }
 ]
 

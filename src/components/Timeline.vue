@@ -24,6 +24,7 @@
                :event-start-hour="event.eventStart_date"
                :event-description="event.description"
                :event-image="event.image"
+               :event-id="event.id"
     ></EventItem>
   </ul>
   <footer>
@@ -71,7 +72,6 @@ export default {
       return this.$storage.getStorageSync("user").image
     },
     getEvents(){
-      let eventsRes = [];
       fetch('http://puigmal.salle.url.edu/api/v2/events', {
         method: 'GET',
         headers: {
@@ -85,16 +85,12 @@ export default {
               if (data[i].image.toLowerCase().indexOf("http") === -1) {
                 data[i].image = "https://www.onlineontime.es/wp-content/uploads/2018/04/cuestionario-evento.png";
               }
-              eventsRes.push(data[i]);
+              this.events.push(data[i]);
             }
-            this.events = eventsRes;
             console.log(this.events);
           })
           .catch(err => console.error(err))
-
-      return eventsRes
     }
-
   },
   created() {
     this.getEvents();

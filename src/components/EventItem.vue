@@ -1,6 +1,6 @@
 <template>
   <li>
-    <div class="flex-events-timeline-container">
+    <router-link class="flex-events-timeline-container" to="/eventDetail" v-on:click.prevent="saveId(eventId)">
       <img class="flex-events-timeline-image" :src="eventImage" alt="Event image"/>
       <div class="flex-event-data1">
         <h3>{{ eventName }}</h3>
@@ -10,7 +10,7 @@
       <div class="flex-event-data2">
         <p>{{ eventDescription }}</p>
       </div>
-    </div>
+    </router-link>
   </li>
 </template>
 
@@ -22,8 +22,15 @@ export default {
     'eventLocation',
     'eventStartHour',
     'eventDescription',
-    'eventImage'
-  ]
+    'eventImage',
+    'eventId'
+  ],
+  methods: {
+    saveId(id) {
+      console.log(this.eventId);
+      this.$storage.setStorageSync('eventId', id);
+    }
+  }
 }
 </script>
 
@@ -60,6 +67,12 @@ export default {
   height: 100px;
   border: groove;
   margin-right: 5%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 1%;
 }
 
 </style>
