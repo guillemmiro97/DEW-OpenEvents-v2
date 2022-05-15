@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 
 import Login from "@/components/Login";
 import Register from "@/components/Register";
@@ -12,61 +12,61 @@ import CreateEvent from "@/components/CreateEvent";
 import EventDetail from "@/components/EventDetail";
 
 const routes = [
-  {
-    path: '/',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: Register
-  },
-  {
-    path: '/main',
-    name: 'main',
-    component: Main
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: Profile
-  },
-  {
-    path: '/stats',
-    name: 'stats',
-    component: Stats
-  },
-  {
-    path: '/accountConfig',
-    name: 'accountConfig',
-    component: AccountConfig
-  },
-  {
-    path: '/timeline',
-    name: 'timeline',
-    component: Timeline
-  },
-  {
-    path: '/createEvent',
-    name: 'createEvent',
-    component: CreateEvent
-  },
-  {
-    path: '/friendZone',
-    name: 'friendzone',
-    component: FriendZone
-  },
-  {
-    path: '/eventDetail',
-    name: 'eventDetail',
-    component: EventDetail
-  }
+    {
+        path: '/',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: Register
+    },
+    {
+        path: '/main',
+        name: 'main',
+        component: Main
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile
+    },
+    {
+        path: '/stats',
+        name: 'stats',
+        component: Stats
+    },
+    {
+        path: '/accountConfig',
+        name: 'accountConfig',
+        component: AccountConfig
+    },
+    {
+        path: '/timeline',
+        name: 'timeline',
+        component: Timeline
+    },
+    {
+        path: '/createEvent',
+        name: 'createEvent',
+        component: CreateEvent
+    },
+    {
+        path: '/friendZone',
+        name: 'friendzone',
+        component: FriendZone
+    },
+    {
+        path: '/eventDetail',
+        name: 'eventDetail',
+        component: EventDetail
+    }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+    history: createWebHistory(process.env.BASE_URL),
+    routes
 })
 
 export default router

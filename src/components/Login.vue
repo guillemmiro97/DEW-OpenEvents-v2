@@ -82,7 +82,7 @@ export default {
           .catch(err => console.error(err))
     },
     getUserData(email) {
-      fetch('http://puigmal.salle.url.edu/api/v2/users/search?' + "s=" + email,{
+      fetch('http://puigmal.salle.url.edu/api/v2/users/search?' + "s=" + email, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

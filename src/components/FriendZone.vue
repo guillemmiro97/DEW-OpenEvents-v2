@@ -61,13 +61,13 @@
      </div>
    </main>
 -->
-   <footer>
-     <div class="flex-container-icons">
-       <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
-       <div><a href="#" class="fa fa-google" style="color: white"></a></div>
-     </div>
-   </footer>
+  <footer>
+    <div class="flex-container-icons">
+      <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
+      <div><a href="#" class="fa fa-google" style="color: white"></a></div>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -123,22 +123,22 @@ export default {
   width: 5%;
 }
 
-.header-title a{
+.header-title a {
   text-decoration: none;
   color: black;
 }
 
-.dropdown{
+.dropdown {
   background-color: whitesmoke;
   border-radius: 50%;
   font-family: Verdana, serif;
 }
 
-.dropdown-content{
-  display:none;
+.dropdown-content {
+  display: none;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
   display: flex;
@@ -149,13 +149,13 @@ export default {
   overflow: hidden;
 }
 
-.dropdown-content a{
+.dropdown-content a {
   padding: 10px;
   text-decoration: none;
   color: inherit;
 }
 
-.dropdown-content a:hover{
+.dropdown-content a:hover {
   background-color: #8080801c;
 }
 
@@ -207,7 +207,7 @@ button:hover {
 }
 
 
-.side-nav{
+.side-nav {
   height: 82%;
   width: 0;
   position: fixed;
@@ -220,8 +220,9 @@ button:hover {
   padding-top: 60px;
   transition: 0.5s
 }
-.side-nav a{
-  display:flex;
+
+.side-nav a {
+  display: flex;
   flex-direction: column;
   text-decoration: none;
   font-family: Calibri, serif;
@@ -231,75 +232,80 @@ button:hover {
   padding: 10px;
 }
 
-.side-nav a:hover{
+.side-nav a:hover {
   color: lightgoldenrodyellow;
 }
 
-.side-nav .btn-close{
+.side-nav .btn-close {
   position: absolute;
-  top:0;
-  right:22px;
+  top: 0;
+  right: 22px;
   font-size: 36px;
 }
-main{
+
+main {
   transition: 0.5s;
   font-family: Calibri, serif;
 }
-main h2{
+
+main h2 {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
 
-main section{
+main section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 25px;
 
 }
-main section article{
+
+main section article {
   display: flex;
   margin-left: 20%;
-  border-style:groove ;
+  border-style: groove;
   width: 60%;
 
 }
-.flex-friend-data{
+
+.flex-friend-data {
   justify-content: flex-start;
 }
 
-.flex-list-container{
+.flex-list-container {
   display: flex;
   flex-direction: row;
   align-items: baseline;
 }
-.remove-friend-link{
+
+.remove-friend-link {
   color: #fff;
   font-weight: bold;
   text-decoration: none;
   padding: 10px;
   border-radius: 4%;
   border-color: #b30007;
-  background-color:#b30000;
-  border-style:groove;
+  background-color: #b30000;
+  border-style: groove;
   margin-bottom: 10px;
   position: absolute;
   right: 25%;
 }
 
-.remove-friend-link:hover{
+.remove-friend-link:hover {
   opacity: 0.7;
   transition: 0.5s;
 }
 
-.friend-photo{
+.friend-photo {
   height: 100px;
   width: 100px;
   border-radius: 50%;
 }
 
-footer{
+footer {
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
@@ -325,6 +331,7 @@ footer{
 .fa-google {
   background: #dd4b39;
 }
+
 .flex-container-icons {
   display: flex;
   flex-direction: row;

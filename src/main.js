@@ -9,7 +9,7 @@ const app = createApp(App)
 
 app.use(router)
 
-app.use(Vue3Storage,{ namespace: "pro_", storage: StorageType.Local })
+app.use(Vue3Storage, {namespace: "pro_", storage: StorageType.Local})
 
 app.use(VueSidebarMenu)
 

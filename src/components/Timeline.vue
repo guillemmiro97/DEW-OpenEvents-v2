@@ -71,7 +71,7 @@ export default {
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
     },
-    getEvents(){
+    getEvents() {
       fetch('http://puigmal.salle.url.edu/api/v2/events', {
         method: 'GET',
         headers: {
@@ -80,7 +80,7 @@ export default {
       })
           .then(res => res.json())
           .then((data) => {
-            for (let i = 0; i < data.length ; i++) {
+            for (let i = 0; i < data.length; i++) {
               //check if the event has a picture, if not, use the default one
               if (data[i].image.toLowerCase().indexOf("http") === -1) {
                 data[i].image = "https://www.onlineontime.es/wp-content/uploads/2018/04/cuestionario-evento.png";

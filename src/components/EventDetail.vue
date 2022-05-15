@@ -52,6 +52,7 @@ export default {
   height: 100%;
   background-color: #fff;
 }
+
 .event-detail__body {
   display: flex;
   flex-direction: column;
@@ -60,6 +61,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header {
   display: flex;
   flex-direction: row;
@@ -69,6 +71,7 @@ export default {
   height: 100px;
   background-color: #fff;
 }
+
 .event-detail__header-left {
   display: flex;
   flex-direction: column;
@@ -77,6 +80,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header-left-title {
   display: flex;
   flex-direction: row;
@@ -85,11 +89,13 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header-left-title h1 {
   font-size: 2.5rem;
   font-weight: bold;
   color: #000;
 }
+
 .event-detail__header-left-date {
   display: flex;
   flex-direction: row;
@@ -98,11 +104,13 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header-left-date span {
   font-size: 1.5rem;
   font-weight: bold;
   color: #000;
 }
+
 .event-detail__header-right {
   display: flex;
   flex-direction: column;
@@ -111,6 +119,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header-right-location {
   display: flex;
   flex-direction: row;
@@ -119,6 +128,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .event-detail__header-right-location span {
   font-size: 1.5rem;
   font-weight: bold;

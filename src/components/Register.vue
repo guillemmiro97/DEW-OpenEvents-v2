@@ -9,7 +9,8 @@
       <input v-model="password" type="password" placeholder="Password" name="password" required>
       <input v-model="confirm_paswd" type="password" placeholder="Confirm Password" name="confirmpassword" required>
       <input v-model="image" type="text" placeholder="Add profile picture" name="profilepic" required>
-      <button v-on:click.prevent="register(name,last_name,email,password,confirm_paswd,image)" type="submit">Submit</button>
+      <button v-on:click.prevent="register(name,last_name,email,password,confirm_paswd,image)" type="submit">Submit
+      </button>
     </form>
 
   </main>
@@ -40,7 +41,7 @@ export default {
   },
 
   methods: {
-    register(name,last_name,email,password,confirm_paswd,image) {
+    register(name, last_name, email, password, confirm_paswd, image) {
 
       if (password === confirm_paswd && password.length > 8) {
         const data = {
@@ -61,7 +62,7 @@ export default {
             .then(res => res.json())
             .then((data) => {
               console.log(data);
-              alert("User "+name+" created");
+              alert("User " + name + " created");
               this.$router.push('/');
             })
             .catch(err => console.error(err))
@@ -75,7 +76,6 @@ export default {
     }
   }
 }
-
 
 
 </script>

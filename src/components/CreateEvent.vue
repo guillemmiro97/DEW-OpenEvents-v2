@@ -26,7 +26,8 @@
       <textarea v-model="event.description" name="description">Description of Event</textarea>
       <input v-model="event.eventStart_date" type="text" placeholder="Starting Date" name="startdate" required>
       <input v-model="event.eventEnd_date" type="text" placeholder="Finishing Date" name="finishdate" required>
-      <input v-model="event.n_participators" type="text" placeholder="Number of Participants" name="participants" required>
+      <input v-model="event.n_participators" type="text" placeholder="Number of Participants" name="participants"
+             required>
       <input v-model="event.type" type="text" placeholder="Type of Event" name="Type of Event" required>
 
       <button v-on:click.prevent="createEvent()" type="submit">Create Event</button>
@@ -61,7 +62,7 @@ export default {
           .then(res => res.json())
           .then((data) => {
             console.log(data);
-            alert("Event created successfully "+ data.name)
+            alert("Event created successfully " + data.name)
           })
           .catch(err => console.error(err))
     }
@@ -74,8 +75,8 @@ export default {
         location: "Barcelona",
         description: "Learn the basics of portrait drawing with a" +
             "professional artist with +10 years of experience.",
-        eventStart_date: "2022-01-20T12:00:00.000Z",
-        eventEnd_date: "2022-01-20T13:30:00.000Z",
+        eventStart_date: "2024-01-20T12:00:00.000Z",
+        eventEnd_date: "2024-01-20T13:30:00.000Z",
         n_participators: "20",
         type: "Education"
       },
@@ -199,6 +200,7 @@ button {
   width: 10%;
   border-radius: 8%;
 }
+
 button:hover {
   opacity: 0.8;
 }

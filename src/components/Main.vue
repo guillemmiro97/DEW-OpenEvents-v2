@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     goToRoute(route) {
-      this.$router.push('/'+route)
+      this.$router.push('/' + route)
     },
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
@@ -72,22 +72,22 @@ export default {
   width: 5%;
 }
 
-.header-title a{
+.header-title a {
   text-decoration: none;
   color: black;
 }
 
-.dropdown{
+.dropdown {
   background-color: whitesmoke;
   border-radius: 50%;
   font-family: Verdana, serif;
 }
 
-.dropdown-content{
-  display:none;
+.dropdown-content {
+  display: none;
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
   display: flex;
@@ -98,13 +98,13 @@ export default {
   overflow: hidden;
 }
 
-.dropdown-content a{
+.dropdown-content a {
   padding: 10px;
   text-decoration: none;
   color: inherit;
 }
 
-.dropdown-content a:hover{
+.dropdown-content a:hover {
   background-color: #8080801c;
 }
 
@@ -122,7 +122,7 @@ button:hover {
   opacity: 0.8;
 }
 
-.flex-container-boxes{
+.flex-container-boxes {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -132,7 +132,7 @@ button:hover {
 }
 
 @media screen and (max-width: 600px) {
-  .flex-container-boxes{
+  .flex-container-boxes {
     flex-direction: column;
     justify-content: space-around;
     padding: 10%;
@@ -140,7 +140,7 @@ button:hover {
   }
 }
 
-.flex-container-boxes a{
+.flex-container-boxes a {
   border: groove #f2e6d9;
   border-radius: 10px;
   font-style: italic;
@@ -149,14 +149,14 @@ button:hover {
   font-family: "Calibri", serif;
   font-size: xx-large;
   background: #f9f2ec;
-  color:black;
+  color: black;
 }
 
-.flex-container-boxes a:hover{
+.flex-container-boxes a:hover {
   opacity: 0.5;
 }
 
-footer{
+footer {
   position: fixed;
   padding: 10px 10px 0 10px;
   bottom: 0;
@@ -182,6 +182,7 @@ footer{
 .fa-google {
   background: #dd4b39;
 }
+
 .flex-container-icons {
   display: flex;
   flex-direction: row;
