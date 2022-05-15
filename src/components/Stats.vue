@@ -147,6 +147,7 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
+  color: inherit;
 }
 
 .dropdown-content a:hover {
@@ -218,29 +219,6 @@ td, th {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
-}
-
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
-
-.flex-item:nth-child(1) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-}
-
-.flex-item:nth-child(2) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-  width: 50%;
 }
 
 footer {

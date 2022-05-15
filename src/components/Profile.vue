@@ -107,6 +107,7 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
+  color: inherit;
 }
 
 .dropdown-content a:hover {
@@ -121,22 +122,6 @@ export default {
 
 body {
   background-color: #EFEFEF;
-}
-
-.flex-container-update {
-  font-family: Calibri, serif;
-  font-size: x-large;
-  display: flex;
-  justify-content: center;
-}
-
-.flex-form-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
 }
 
 form {

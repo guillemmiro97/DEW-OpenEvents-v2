@@ -149,6 +149,7 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
+  color: inherit;
 }
 
 .dropdown-content a:hover {
@@ -200,21 +201,6 @@ button {
 }
 button:hover {
   opacity: 0.8;
-}
-
-
-.side-nav {
-  height: 82%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  background-color: #111;
-  opacity: 0.6;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s
 }
 
 .side-nav a {

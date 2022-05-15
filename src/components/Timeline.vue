@@ -148,6 +148,7 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
+  color: inherit;
 }
 
 .dropdown-content a:hover {
@@ -187,21 +188,6 @@ button {
 
 button:hover {
   opacity: 0.8;
-}
-
-
-.side-nav {
-  height: 82%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  background-color: #111;
-  opacity: 0.6;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s
 }
 
 .side-nav a {
@@ -262,40 +248,6 @@ main section {
 .flex-search-container button {
   flex: 1;
   margin-right: 2%;
-}
-
-.flex-events-timeline-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-}
-
-.flex-event-detail {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  color: #111111;
-  width: 80%;
-  border-style: groove;
-  justify-content: space-evenly;
-
-  align-items: center;
-  margin-left: 5%;
-}
-
-.flex-event-data1 {
-  margin-left: 5%;
-  flex: 3;
-}
-
-.flex-event-data2 {
-  border: groove;
-  flex: 1;
-  margin-right: 5%;
-  height: 100px;
-  text-align: justify;
-  padding: 5px;
 }
 
 footer {

@@ -171,6 +171,7 @@ export default {
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
+  color: inherit;
 }
 
 .dropdown-content a:hover {
