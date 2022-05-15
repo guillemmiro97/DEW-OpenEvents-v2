@@ -21,12 +21,11 @@
   <main>
 
     <h1>Friends management</h1>
-    <form class="flex-search-container">
-      <label>
-        <input type="text" placeholder="Username/Friend name" name="name" required>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+
+    <div class="search-bar">
+      <input  v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
+      <button v-on:click.prevent="searchFriends(searchdata)" class="submit"><i class="fa fa-search"></i></button>
+    </div>
     <section>
       <FriendManagementAdd
           v-for="friend in friends"
@@ -62,6 +61,7 @@ export default {
   data() {
     return {
       friends: [],
+      searchdata: '',
       menu: [
         {
           header: 'Main Navigation',
@@ -98,6 +98,30 @@ export default {
       })
           .then(res => res.json())
           .then((data) => {
+            data.map(friend => {
+              if (friend.image.toLowerCase().indexOf("http") === -1) {
+                friend.image = "https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?s=612x612";
+              }
+              this.friends.push(friend);
+            })
+
+            console.log(this.friends);
+          })
+          .catch(err => console.error(err))
+    },
+    searchFriends(){
+      fetch('http://puigmal.salle.url.edu/api/v2/users/search?s='+this.searchdata, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$storage.getStorageSync('token')
+
+        }
+      })
+          .then(res => res.json())
+          .then((data) => {
+            this.friends = []
+
             data.map(friend => {
               if (friend.image.toLowerCase().indexOf("http") === -1) {
                 friend.image = "https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?s=612x612";
@@ -181,6 +205,15 @@ body {
   background-color: #EFEFEF;
 }
 
+.search-bar {
+  width: 100%;
+  display: flex;
+  padding: 12px 20px;
+  margin-left: 5%;
+  gap: 2%;
+  flex-direction: row;
+}
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 200px 12px 40px;
@@ -242,14 +275,7 @@ main h1, h2 {
   flex-direction: row;
 }
 
-.flex-search-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 1%;
-  margin-left: 5%;
-  align-items: baseline;
-}
-
+.
 .flex-search-container label {
   flex: 25;
 }
@@ -259,16 +285,16 @@ main h1, h2 {
   margin-right: 2%;
 }
 
+main{
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 main section {
   display: flex;
   flex-direction: column;
 }
 
-.friend-photo {
-  width: 80px;
-  height: 80px;
-  margin-top: 10px;
-}
 
 main section {
   display: flex;
@@ -276,15 +302,6 @@ main section {
   gap: 15px;
 }
 
-.flex-friend-data {
-  display: flex;
-  width: 92%;
-  border-style: groove;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-left: 5%;
-  flex: 25;
-}
 
 footer {
   position: fixed;
