@@ -9,7 +9,7 @@
         <router-link to="/profile">Profile</router-link>
         <router-link to="/stats">Account stats</router-link>
         <router-link to="/accountConfig">Account configuration</router-link>
-        <a href="#">Logout</a>
+        <a v-on:click.prevent="removeStorageSync()">Logout</a>
       </div>
     </div>
   </header>
@@ -30,29 +30,6 @@
           :friend-email="friend.email"
           :friend-photo="friend.image"
       />
-      <!--<article>
-
-      </article>
-      <article>
-        <img class="friend-photo" alt="Friend photo" src="../media/images/profile_picture.webp">
-        <div class="flex-friend-data">
-          <h2>Name Surname</h2>
-          <div class="flex-list-container">
-            <p>email@email.com</p>
-            <a class="remove-friend-link" href="#">Remove as a friend</a>
-          </div>
-        </div>
-      </article>
-      <article>
-        <img class="friend-photo" alt="Friend photo" src="../media/images/profile_picture.webp">
-        <div class="flex-friend-data">
-          <h2>Name Surname</h2>
-          <div class="flex-list-container">
-            <p>email@email.com</p>
-            <a class="remove-friend-link" href="#">Remove as a friend</a>
-          </div>
-        </div>
-      </article>-->
     </section>
   </main>
 
@@ -102,6 +79,10 @@ export default {
   },
 
   methods: {
+    removeStorageSync() {
+      this.$storage.clearStorageSync();
+      this.$router.push('/');
+    },
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
     },
