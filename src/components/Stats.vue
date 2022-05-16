@@ -113,16 +113,6 @@ export default {
   color: black;
 }
 
-.dropdown {
-  background-color: whitesmoke;
-  border-radius: 50%;
-  font-family: Verdana, serif;
-}
-
-.dropdown-content {
-  display: none;
-}
-
 .dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
@@ -142,12 +132,6 @@ export default {
 
 .dropdown-content a:hover {
   background-color: #8080801c;
-}
-
-.profile-icon {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
 }
 
 body {

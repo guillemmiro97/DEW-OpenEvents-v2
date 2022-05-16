@@ -79,16 +79,6 @@ body {
   background-color: #EFEFEF;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-  margin-top: 5%;
-}
-
 .flex-items:nth-child(1) {
   display: block;
   flex-grow: 0;
@@ -106,10 +96,6 @@ body {
   flex-basis: auto;
   align-self: auto;
   order: 0;
-}
-
-.party-photo {
-  width: 60%;
 }
 
 h1 {
@@ -152,15 +138,6 @@ button:hover {
   opacity: 0.8;
 }
 
-.flex-form-register {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-  margin-top: 1%;
-}
 
 .flex-items-register:nth-child(2) {
   display: block;
