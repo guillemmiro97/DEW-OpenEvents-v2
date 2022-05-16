@@ -337,14 +337,6 @@ main section {
   gap: 15px;
 }
 
-
-footer {
-  position: fixed;
-  padding: 10px 10px 0 10px;
-  bottom: 0;
-  width: 100%;
-}
-
 .fa {
   padding: 10px;
   font-size: 30px;
@@ -374,5 +366,8 @@ footer {
   align-content: stretch;
   margin-top: 5%;
   margin-right: 2%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>
