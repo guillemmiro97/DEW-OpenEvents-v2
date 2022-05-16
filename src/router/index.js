@@ -10,6 +10,7 @@ import Timeline from "@/components/Timeline";
 import FriendsManagement from "@/components/FriendsManagement";
 import CreateEvent from "@/components/CreateEvent";
 import EventDetail from "@/components/EventDetail";
+import ListOfFriends from "@/components/ListOfFriends";
 
 const routes = [
     {
@@ -61,6 +62,11 @@ const routes = [
         path: '/eventDetail',
         name: 'eventDetail',
         component: EventDetail
+    },
+    {
+        path: '/listOfFriends',
+        name: 'listOfFriends',
+        component: ListOfFriends
     }
 ]
 
