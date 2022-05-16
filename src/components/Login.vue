@@ -27,19 +27,14 @@
     </section>
 
   </main>
-  <footer>
-    <div class="flex-container-icons">
-      <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
-      <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
-      <div><a href="#" class="fa fa-google" style="color: white"></a></div>
-    </div>
-  </footer>
-
+  <FooterComponent/>
 </template>
+
 <script>
+import FooterComponent from "@/components/Footer";
 export default {
   name: "LoginComponent",
-
+  components: {FooterComponent},
   data() {
     return {
       email: 'test@test.com',
@@ -201,12 +196,6 @@ button:hover {
   font-size: 5.5em;
 }
 
-#title-register {
-  font-size: 5.5em;
-  text-align: center;
-}
-
-
 a {
   font-family: Verdana, serif;
 }
@@ -215,54 +204,4 @@ a:visited {
   text-decoration: none;
   color: navy;
 }
-
-.flex-container-icons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: right;
-  align-items: center;
-  align-content: stretch;
-  margin-top: 5%;
-  margin-right: 5%;
-}
-
-footer {
-  position: fixed;
-  padding: 10px 10px 0 10px;
-  bottom: 0;
-  width: 100%;
-}
-
-.fa {
-  padding: 10px;
-  font-size: 30px;
-  text-decoration: none;
-  border-radius: 50%;
-  margin-left: 1px;
-}
-
-.fa-facebook {
-  background: #3B5998;
-}
-
-.fa-twitter {
-  background: #55ACEE;
-}
-
-.fa-google {
-  background: #dd4b39;
-}
-
-.flex-container-icons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: right;
-  align-items: flex-end;
-  align-content: stretch;
-  margin-top: 5%;
-  margin-right: 2%;
-}
-
 </style>

@@ -49,25 +49,18 @@
       />
     </section>
   </main>
-
-
-  <footer>
-    <div class="flex-container-icons">
-      <div><a href="#" class="fa fa-facebook" style="color: white"></a></div>
-      <div><a href="#" class="fa fa-twitter" style="color: white"></a></div>
-      <div><a href="#" class="fa fa-google" style="color: white"></a></div>
-    </div>
-  </footer>
+  <FooterComponent/>
 </template>
 
 <script>
 
 import FriendManagementAdd from "@/components/FriendManagementAdd";
 import FriendsManagementAccept from "@/components/FriendsManagementAccept";
+import FooterComponent from "@/components/Footer";
 
 export default {
   name: "FriendZoneComponent",
-  components: {FriendManagementAdd, FriendsManagementAccept},
+  components: {FriendManagementAdd, FriendsManagementAccept, FooterComponent},
   data() {
     return {
       friends: [],
@@ -310,7 +303,6 @@ main h1, h2 {
   flex-direction: row;
 }
 
-.
 .flex-search-container label {
   flex: 25;
 }
@@ -335,39 +327,5 @@ main section {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.fa {
-  padding: 10px;
-  font-size: 30px;
-  text-decoration: none;
-  border-radius: 50%;
-  margin-left: 1px;
-}
-
-.fa-facebook {
-  background: #3B5998;
-}
-
-.fa-twitter {
-  background: #55ACEE;
-}
-
-.fa-google {
-  background: #dd4b39;
-}
-
-.flex-container-icons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: right;
-  align-items: flex-end;
-  align-content: stretch;
-  margin-top: 5%;
-  margin-right: 2%;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 </style>
