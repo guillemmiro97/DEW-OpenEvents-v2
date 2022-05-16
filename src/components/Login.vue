@@ -107,6 +107,7 @@ body {
   align-items: center;
   align-content: stretch;
   margin-top: 5%;
+  gap: 10%;
 }
 
 .flex-items:nth-child(1) {
