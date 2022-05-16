@@ -3,15 +3,7 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
-    <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
-      <div class="dropdown-content">
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/stats">Account stats</router-link>
-        <router-link to="/accountConfig">Account configuration</router-link>
-        <a href="#">Logout</a>
-      </div>
-    </div>
+    <ProfileMenu/>
   </header>
 
   <!-- navbar -->
@@ -41,10 +33,12 @@
 <script>
 import EventItem from "@/components/EventItem";
 import FooterComponent from "@/components/Footer";
+import ProfileMenu from "@/components/ProfileMenu";
 
 export default {
   name: "TimelineComponent",
   components: {
+    ProfileMenu,
     FooterComponent,
     EventItem
   },
@@ -151,16 +145,6 @@ export default {
   color: black;
 }
 
-.dropdown {
-  background-color: whitesmoke;
-  border-radius: 50%;
-  font-family: Verdana, serif;
-}
-
-.dropdown-content {
-  display: none;
-}
-
 .dropdown:hover .dropdown-content {
   background-color: ghostwhite;
   text-align: left;
@@ -180,12 +164,6 @@ export default {
 
 .dropdown-content a:hover {
   background-color: #8080801c;
-}
-
-.profile-icon {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
 }
 
 body {

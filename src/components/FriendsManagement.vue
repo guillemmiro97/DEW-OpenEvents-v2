@@ -3,15 +3,7 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
-    <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
-      <div class="dropdown-content">
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/stats">Account stats</router-link>
-        <router-link to="/accountConfig">Account configuration</router-link>
-        <a href="#">Logout</a>
-      </div>
-    </div>
+    <ProfileMenu/>
   </header>
 
   <!-- navbar -->
@@ -57,10 +49,11 @@
 import FriendManagementAdd from "@/components/FriendManagementAdd";
 import FriendsManagementAccept from "@/components/FriendsManagementAccept";
 import FooterComponent from "@/components/Footer";
+import ProfileMenu from "@/components/ProfileMenu";
 
 export default {
   name: "FriendZoneComponent",
-  components: {FriendManagementAdd, FriendsManagementAccept, FooterComponent},
+  components: {ProfileMenu, FriendManagementAdd, FriendsManagementAccept, FooterComponent},
   data() {
     return {
       friends: [],

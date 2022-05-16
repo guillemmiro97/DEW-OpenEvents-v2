@@ -4,15 +4,7 @@
       <router-link to="/main">OpenEvents</router-link>
     </div>
     <!---Menu de usuario-->
-    <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
-      <div class="dropdown-content">
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/stats">Account stats</router-link>
-        <router-link to="/accountConfig">Account configuration</router-link>
-        <a href="#">Logout</a>
-      </div>
-    </div>
+    <ProfileMenu/>
   </header>
   <!--Contenido de la pagina-->
   <main>
@@ -36,10 +28,11 @@
 
 <script>
 import FooterComponent from "@/components/Footer";
+import ProfileMenu from "@/components/ProfileMenu";
 
 export default {
   name: "ProfileComponent",
-  components: {FooterComponent},
+  components: {ProfileMenu, FooterComponent},
   data() {
     return {
       name: this.$storage.getStorageSync("user").name,

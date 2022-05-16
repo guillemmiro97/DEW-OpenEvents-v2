@@ -3,15 +3,7 @@
     <div class="header-title">
       <router-link to="/main">OpenEvents</router-link>
     </div>
-    <div class="dropdown">
-      <img class="profile-icon" alt="Profile picture" :src="getProfileImage()">
-      <div class="dropdown-content">
-        <router-link to="/profile">Profile</router-link>
-        <router-link to="/stats">Account stats</router-link>
-        <router-link to="/accountConfig">Account configuration</router-link>
-        <a v-on:click.prevent="removeStorageSync()">Logout</a>
-      </div>
-    </div>
+    <ProfileMenu/>
   </header>
 
   <!--Contenido de la página-->
@@ -40,6 +32,7 @@
 
 import FriendManagementFriendItem from "@/components/FriendManagementFriendItem";
 import FooterComponent from "@/components/Footer";
+import ProfileMenu from "@/components/ProfileMenu";
 
 export default {
   name: "ListOfFriends",
@@ -68,6 +61,7 @@ export default {
 
   },
   components: {
+    ProfileMenu,
     FooterComponent,
     FriendManagementFriendItem
   },
