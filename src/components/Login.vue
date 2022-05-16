@@ -48,7 +48,7 @@ export default {
   },
   created() {
     if (this.$storage.getStorageSync('token') != null) {
-      this.$router.push('/main')
+      this.$router.push('main')
     }
   },
   methods: {
@@ -75,9 +75,6 @@ export default {
             //session storage
             this.$storage.setStorageSync("token", data.accessToken)
             this.getUserData(email)
-
-            this.$router.push('/main');
-
           })
           .catch(err => console.error(err))
     },
@@ -93,6 +90,7 @@ export default {
           .then((data) => {
             console.log(data);
             this.$storage.setStorageSync("user", data[0])
+            this.$router.push('main');
           })
     }
   }

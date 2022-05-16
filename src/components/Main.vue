@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     goToRoute(route) {
-      this.$router.push('/' + route)
+      this.$router.push(route)
     },
     getProfileImage() {
       return this.$storage.getStorageSync("user").image
