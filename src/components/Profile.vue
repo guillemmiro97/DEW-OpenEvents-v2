@@ -150,6 +150,7 @@ main h1 {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  font-size: xx-large;
 }
 
 main h2 {
@@ -157,6 +158,7 @@ main h2 {
   justify-content: left;
   flex-direction: row;
   font-family: Calibri, serif, sans-serif;
+  font-size: large;
 }
 
 main img {

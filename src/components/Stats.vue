@@ -140,7 +140,7 @@ body {
 
 .flex-container-update {
   font-family: Calibri, serif;
-  font-size: x-large;
+  font-size: xx-large;
   display: flex;
   justify-content: center;
 }
