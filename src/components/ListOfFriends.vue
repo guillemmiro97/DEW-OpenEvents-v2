@@ -47,13 +47,12 @@ export default {
         {
           href: '/listOfFriends',
           title: 'List of Friends',
-          icon: ''
+          icon: 'fa fa-solid fa-users'
         },
         {
           href: '/friendsManagement',
           title: 'Friends Management',
-          icon: ''
-
+          icon: 'fa fa-solid fa-key'
         }
       ]
     }

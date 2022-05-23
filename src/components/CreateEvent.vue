@@ -81,12 +81,12 @@ export default {
         {
           href: '/createEvent',
           title: 'Create Event',
-          icon: ''
+          icon: 'fa fa-solid fa-bomb'
         },
         {
           href: '/timeline',
           title: 'Timeline',
-          icon: ''
+          icon: 'fa fa-regular fa-calendar'
 
         }
       ]
