@@ -8,7 +8,7 @@
 
   <!--Contenido de la página-->
   <main>
-    <sidebar-menu :menu="menu"/>
+    <sidebar-menu :collapsed="true" :menu="menu"/>
     <!---Tabla con la lista de amigos organizada con una section y articles dentro-->
 
     <section>

@@ -7,7 +7,7 @@
   </header>
 
   <!-- navbar -->
-  <sidebar-menu :menu="menu"/>
+  <sidebar-menu :collapsed="true" :menu="menu"/>
 
   <main>
     <h1>Create Event</h1>
@@ -87,7 +87,6 @@ export default {
           href: '/timeline',
           title: 'Timeline',
           icon: 'fa fa-regular fa-calendar'
-
         }
       ]
     }

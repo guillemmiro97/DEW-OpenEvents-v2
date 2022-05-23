@@ -7,11 +7,11 @@
   </header>
 
   <!-- navbar -->
-  <sidebar-menu :menu="menu"/>
+  <sidebar-menu :collapsed="true" :menu="menu"/>
   <div class="flex-search-container">
     <div class="col-md-12">
       <div class="search-bar">
-        <input  v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
+        <input v-model="searchdata" type="text" placeholder="Name of event..." name="search-data">
         <button v-on:click.prevent="searchEvents(searchdata)" class="submit"><i class="fa fa-search"></i></button>
       </div>
     </div>
@@ -50,6 +50,7 @@ export default {
         {
           header: 'Main Navigation',
           hiddenOnCollapse: true,
+
         },
         {
           href: '/createEvent',
@@ -61,7 +62,8 @@ export default {
           title: 'Timeline',
           icon: 'fa fa-regular fa-calendar'
         }
-      ]
+      ],
+      hideToggle: false,
     }
   },
   methods: {

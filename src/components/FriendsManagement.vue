@@ -7,7 +7,7 @@
   </header>
 
   <!-- navbar -->
-  <sidebar-menu :menu="menu"/>
+  <sidebar-menu :collapsed="true" :menu="menu"/>
 
   <main>
 
